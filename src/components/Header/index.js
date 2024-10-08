@@ -1,14 +1,17 @@
-import { Link, useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import './index.css';
+import {Link, useNavigate} from 'react-router-dom'
 
-const Header = () => {
-  const navigate = useNavigate();
+import Cookies from 'js-cookie'
+
+import './index.css'
+
+const Header = props => {
+  const navigate=useNavigate()
 
   const onClickLogout = () => {
-    Cookies.remove('jwt_token');
-    navigate('/login', { replace: true });
-  };
+   
+    Cookies.remove('jwt_token')
+   navigate("/login")
+  }
 
   return (
     <nav className="nav-header">
@@ -21,15 +24,12 @@ const Header = () => {
               alt="website logo"
             />
           </Link>
-          <button
-            type="button"
-            className="nav-mobile-btn"
-            onClick={onClickLogout}
-          >
+          <button type="button" className="nav-mobile-btn">
             <img
               src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-log-out-img.png"
               alt="nav logout"
-              className="nav-bar-img"
+              className="nav-bar-image"
+              onClick={onClickLogout}
             />
           </button>
         </div>
@@ -77,7 +77,7 @@ const Header = () => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-icon.png"
                 alt="nav home"
-                className="nav-bar-img"
+                className="nav-bar-image"
               />
             </Link>
           </li>
@@ -87,7 +87,7 @@ const Header = () => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-products-icon.png"
                 alt="nav products"
-                className="nav-bar-img"
+                className="nav-bar-image"
               />
             </Link>
           </li>
@@ -96,14 +96,14 @@ const Header = () => {
               <img
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png"
                 alt="nav cart"
-                className="nav-bar-img"
+                className="nav-bar-image"
               />
             </Link>
           </li>
         </ul>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
