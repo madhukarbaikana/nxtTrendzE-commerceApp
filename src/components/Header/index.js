@@ -1,10 +1,13 @@
 import {Link, useNavigate} from 'react-router-dom'
-
+import {useContext} from "react"
 import Cookies from 'js-cookie'
+import {CartContext} from "../../context/CartContext"
 
 import './index.css'
 
 const Header = props => {
+  const {cartList}=useContext(CartContext)
+  const showNoOfItemsInCart=cartList.length>0
   const navigate=useNavigate()
 
   const onClickLogout = () => {
@@ -57,7 +60,7 @@ const Header = props => {
 
             <li className="nav-menu-item">
               <Link to="/cart" className="nav-link">
-                Cart
+                Cart{showNoOfItemsInCart&& <span className="cart-count-badge"> {cartList.length}</span>}
               </Link>
             </li>
           </ul>
@@ -97,7 +100,7 @@ const Header = props => {
                 src="https://assets.ccbp.in/frontend/react-js/nxt-trendz-cart-icon.png"
                 alt="nav cart"
                 className="nav-bar-image"
-              />
+              />{showNoOfItemsInCart&& <span className="cart-count-badge"> {cartList.length}</span>}
             </Link>
           </li>
         </ul>

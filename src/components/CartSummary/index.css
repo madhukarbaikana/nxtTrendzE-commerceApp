@@ -1,0 +1,55 @@
+.cart-summary-container{
+    display:flex;
+    flex-direction:column;
+    align-self:flex-end;
+   
+}
+.order-total-value{
+    color:#616e7c;
+    font-weight: bold;
+    font-size:24px;
+    margin-bottom:0px;
+    font-weight: 500;
+}
+@media screen and (max-width:768px) {
+    .order-total-value{
+        font-size: 16px;
+    }
+}
+.order-total-price{
+    font-size:32px;
+    color:#171f46;
+}
+@media screen and (max-width:768px) {
+    .order-total-price{
+        font-size: 16px;
+    }
+}
+.total-items{
+    margin-top:0px;
+    font-size:16px;
+    font-weight:400;
+    color:#616e7c;
+    margin-top:4px;
+}
+@media screen and (max-width:768px) {
+    .total-items{
+        font-size: 14px;
+    }
+}
+.checkout-button{
+    border:none;
+    color:#ffffff;
+    font-size: 12px;
+    background-color:#0b69ff;
+    padding: 12px 25px;
+    border-radius:8px;
+    outline: none;
+    cursor:pointer;
+   
+}
+@media screen and (max-width:768px) {
+    .checkout-button{
+        font-size: 14px;
+    }
+}

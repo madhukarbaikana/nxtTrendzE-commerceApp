@@ -109,11 +109,14 @@
   margin: 10px;
   font-weight: 400;
   font-size: 16px;
+ 
 }
 
 .nav-link {
   text-decoration: none;
   color: #475569;
+  display: flex;
+  align-items:center;
 }
 
 .nav-menu-item-mobile {
@@ -162,4 +165,23 @@
 
 .nav-bar-image {
   width: 24px;
+}
+.cart-count-badge {
+  background-color: #bfdbfe;
+  color: #0967d2;
+  font-family: 'Roboto';
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 50%;
+  padding-left: 5px;
+  padding-top: 2px;
+  padding-right: 5px;
+  padding-bottom: 2px;
+  margin-left: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .cart-count-badge {
+    background-color: #e6f6ff;
+  }
 }

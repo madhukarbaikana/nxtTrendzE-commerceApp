@@ -1,11 +1,12 @@
-import {useState, useEffect} from 'react'
+import {useState, useEffect,useContext} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import Cookies from 'js-cookie'
-import {TailSpin} from 'react-loader-spinner'
+import {ThreeDots} from 'react-loader-spinner'
 import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 
 import Header from '../Header'
 import SimilarProductItem from '../SimilarProductItem'
+import {CartContext} from "../../context/CartContext"
 import './index.css'
 
 const apiStatusConstants = {
@@ -21,6 +22,8 @@ const ProductItemDetails = () => {
   const [apiStatus, setApiStatus] = useState(apiStatusConstants.initial)
   const [quantity, setQuantity] = useState(1)
   const {id} = useParams()
+
+const {addToCart}=useContext(CartContext)
 
   useEffect(() => {
     getProductData()
@@ -47,6 +50,7 @@ const ProductItemDetails = () => {
       },
       method: 'GET',
     }
+    try{
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const fetchedData = await response.json()
@@ -58,6 +62,8 @@ const ProductItemDetails = () => {
       setSimilarProductsData(updatedSimilarProductsData)
       setApiStatus(apiStatusConstants.success)
     } else {
+      setApiStatus(apiStatusConstants.failure)
+    }}catch(error){
       setApiStatus(apiStatusConstants.failure)
     }
   }
@@ -74,7 +80,7 @@ const ProductItemDetails = () => {
 
   const renderLoadingView = () => (
     <div className="products-details-loader-container" data-testid="loader">
-      <TailSpin type="ThreeDots" color="#0b69ff" height="50" width="50" />
+      <ThreeDots color="#0b69ff" height="80" width="80" />
     </div>
   )
 
@@ -105,6 +111,10 @@ const ProductItemDetails = () => {
       title,
       totalReviews,
     } = productData
+
+   const onClickAddToCart=()=>{
+addToCart({...productData,quantity})
+    }
 
     return (
       <div className="product-details-success-view">
@@ -153,7 +163,7 @@ const ProductItemDetails = () => {
                 <BsPlusSquare className="quantity-controller-icon" />
               </button>
             </div>
-            <button type="button" className="button add-to-cart-btn">
+            <button type="button" onClick={onClickAddToCart} className="button add-to-cart-btn">
               ADD TO CART
             </button>
           </div>
