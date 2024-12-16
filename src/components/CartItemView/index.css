@@ -40,13 +40,14 @@
        margin-left:14px;
     }
  }
-.cart-item-title-and-brand-container{
+.cart-item-title-brand-container{
     display:flex;
     flex-direction:column;
     justify-content: center;
+    width:300px;
  }
  @media screen and (max-width:768px){
-    .cart-item-title-and-brand-container{
+    .cart-item-title-brand-container{
         width:250px;
     }
  }
