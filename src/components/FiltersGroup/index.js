@@ -81,7 +81,7 @@ const FiltersGroup = props => {
   }
 
   const renderSearchInput = () => {
-    const {searchInput} = props
+    const {searchInput, getProducts} = props
     return (
       <div className="search-input-container">
         <input
@@ -92,7 +92,7 @@ const FiltersGroup = props => {
           onChange={onChangeSearchInput}
           onKeyDown={onEnterSearchInput}
         />
-        <BsSearch className="search-icon" />
+        <BsSearch className="search-icon" onClick={()=>getProducts()}  />
       </div>
     )
   }
